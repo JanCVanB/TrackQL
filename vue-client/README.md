@@ -1,11 +1,11 @@
 # TrackQL Vue Client
 
-This is a client for [TrackQL](https://github.com/JanCVanB/TrackQL).
+> A client for [TrackQL](https://github.com/JanCVanB/TrackQL)
 
 This client is made with:
 - [Vue.js](https://vuejs.org/) for reactivity and simplicity
 - [vue-apollo](https://github.com/Akryum/vue-apollo) for Vue-Apollo integration
-- [Apollo Client](https://github.com/apollographql/apollo-client) for GraphQL queries
+- [Apollo Client](https://github.com/apollographql/apollo-client) for [GraphQL](http://graphql.org/) queries
 - [Pug](https://github.com/apollographql/apollo-client) for HTML pre-processing
 - [Sass](https://github.com/apollographql/apollo-client) for CSS pre-processing
 - [Yarn](https://github.com/apollographql/apollo-client) for dependency management

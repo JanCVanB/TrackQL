@@ -1,24 +1,39 @@
-# TrackQL
+# TrackQL Vue Client
 
-> A music collaboration studio, made with GraphQL
+This is a client for [TrackQL](https://github.com/JanCVanB/TrackQL).
 
-## Build Setup
+This client is made with:
+- [Vue.js](https://vuejs.org/) for reactivity and simplicity
+- [vue-apollo](https://github.com/Akryum/vue-apollo) for Vue-Apollo integration
+- [Apollo Client](https://github.com/apollographql/apollo-client) for GraphQL queries
+- [Pug](https://github.com/apollographql/apollo-client) for HTML pre-processing
+- [Sass](https://github.com/apollographql/apollo-client) for CSS pre-processing
+- [Yarn](https://github.com/apollographql/apollo-client) for dependency management
+
+## Setup
 
 ``` bash
-# install dependencies with Yarn (yarnpkg.com)
+# Install dependencies with Yarn (yarnpkg.com)
 yarn
 
-# serve with hot reload at localhost:8080
+# Serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
+# Build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
+# Build for production and view the bundle analyzer report
 npm run build --report
 
-# regenerate Element component styles in theme/ from element-variables.css
+# Regenerate Element component styles in theme/ from element-variables.scss
 npm run theme
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Deployment
+
+```bash
+# Deploy the client to GitHub Pages (builds for production & runs deploy.js)
+npm run shipit
+```

@@ -1,6 +1,13 @@
 <template lang="pug">
-  .collaborations
-    h1 Collaborations
+  .home
+    h1 TrackQL
+    h3
+      | A music collaboration studio, made with&nbsp;
+      a(href='http://graphql.org/') GraphQL
+      | &nbsp;and&nbsp;
+      a(href='https://vuejs.org/') Vue
+    br
+    h2 Collaborations
     ul
       li(
         v-for='collaboration in allCollaborations'
@@ -23,7 +30,7 @@ import Collaboration from './Collaboration.vue'
 
 export default {
 
-  name: 'Collaborations',
+  name: 'Home',
 
   apollo: {
 

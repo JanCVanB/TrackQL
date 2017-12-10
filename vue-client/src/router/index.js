@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Collaboration from '@/components/Collaboration'
-import Collaborations from '@/components/Collaborations'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'collaborations',
-      component: Collaborations
+      name: 'home',
+      component: Home
     },
     {
       path: '/collaboration/:id',

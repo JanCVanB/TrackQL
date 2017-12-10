@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import { CLIP_QUERY } from '../constants/graphql'
+import gql from 'graphql-tag'
+
 import Comment from './Comment.vue'
 
 export default {
@@ -31,7 +32,17 @@ export default {
   apollo: {
 
     Clip: {
-      query: CLIP_QUERY,
+      query: gql`
+        query ClipQuery ($id: ID) {
+          Clip (id: $id) {
+            id,
+            name,
+            comments {
+              id
+            }
+          }
+        }
+      `,
       variables () {
         return {
           id: this.id

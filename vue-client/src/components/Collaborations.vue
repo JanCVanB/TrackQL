@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import { ALL_COLLABORATIONS_QUERY } from '../constants/graphql'
+import gql from 'graphql-tag'
+
 import Collaboration from './Collaboration.vue'
 
 export default {
@@ -19,7 +20,13 @@ export default {
   apollo: {
 
     allCollaborations: {
-      query: ALL_COLLABORATIONS_QUERY
+      query: gql`
+        query AllCollaborationsQuery {
+          allCollaborations {
+            id
+          }
+        }
+      `
     }
 
   },

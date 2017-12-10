@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import { TRACK_QUERY } from '../constants/graphql'
+import gql from 'graphql-tag'
+
 import Clip from './Clip.vue'
 import Comment from './Comment.vue'
 
@@ -37,7 +38,20 @@ export default {
   apollo: {
 
     Track: {
-      query: TRACK_QUERY,
+      query: gql`
+        query TrackQuery ($id: ID) {
+          Track (id: $id) {
+            id,
+            name,
+            clips {
+              id
+            },
+            comments {
+              id
+            }
+          }
+        }
+      `,
       variables () {
         return {
           id: this.id

@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import { COLLABORATION_QUERY } from '../constants/graphql'
+import gql from 'graphql-tag'
+
 import Track_ from './Track_.vue'
 
 export default {
@@ -31,7 +32,18 @@ export default {
   apollo: {
 
     Collaboration: {
-      query: COLLABORATION_QUERY,
+      query: gql`
+        query CollaborationQuery ($id: ID) {
+          Collaboration (id: $id) {
+            id,
+            name,
+            slug,
+            tracks {
+              id
+            }
+          }
+        }
+      `,
       variables () {
         return {
           id: this.id

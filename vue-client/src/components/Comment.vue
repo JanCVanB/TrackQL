@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { COMMENT_QUERY } from '../constants/graphql'
+import gql from 'graphql-tag'
 
 export default {
 
@@ -25,7 +25,14 @@ export default {
   apollo: {
 
     Comment: {
-      query: COMMENT_QUERY,
+      query: gql`
+        query CommentQuery ($id: ID) {
+          Comment (id: $id) {
+            id,
+            comment
+          }
+        }
+      `,
       variables () {
         return {
           id: this.id

@@ -1,11 +1,19 @@
 <template lang="pug">
   .collaborations
     h1 Collaborations
-    collaboration(
-      v-for='collaboration in allCollaborations'
-      v-bind:id='collaboration.id'
-      v-bind:key='collaboration.id'
-    )
+    ul
+      li(
+        v-for='collaboration in allCollaborations'
+        v-bind:key='collaboration.id'
+      )
+        router-link(
+          v-bind:to=`{
+            name: 'collaboration',
+            params: { id: collaboration.id }
+          }`
+        )
+          | {{ collaboration.name }}
+          | &nbsp;({{ collaboration.tracks.length }} tracks)
 </template>
 
 <script>
@@ -23,7 +31,11 @@ export default {
       query: gql`
         query AllCollaborationsQuery {
           allCollaborations {
-            id
+            id,
+            name,
+            tracks {
+              id
+            }
           }
         }
       `

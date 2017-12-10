@@ -1,14 +1,17 @@
 <template lang="pug">
   .collaboration
-    h2 Collaboration
     template(v-if='Collaboration')
-      div id: {{ Collaboration.id }}
-      div name: {{ Collaboration.name }}
-      track_(
-        v-for='track in Collaboration.tracks'
-        v-bind:id='track.id'
-        v-bind:key='track.id'
-      )
+      h1 {{ Collaboration.name }}
+      template(v-if='Collaboration.tracks.length')
+        track_(
+          v-for='track in Collaboration.tracks'
+          v-bind:id='track.id'
+          v-bind:key='track.id'
+        )
+      template(v-else)
+        | This collaboration is empty
+    template(v-else)
+      | {{ notFoundMessage }}
 </template>
 
 <script>
@@ -27,6 +30,12 @@ export default {
       required: true
     }
 
+  },
+
+  data () {
+    return {
+      notFoundMessage: '...'
+    }
   },
 
   apollo: {
@@ -53,6 +62,12 @@ export default {
 
   },
 
+  mounted () {
+    setTimeout(() => {
+      this.notFoundMessage = `Can't find collaboration "${this.id}"`
+    }, 2000)
+  },
+
   components: {
     Track_
   }
@@ -61,6 +76,4 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.collaboration
-  margin-left: 60px  
 </style>

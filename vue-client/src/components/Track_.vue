@@ -1,19 +1,17 @@
 <template lang="pug">
   .track
-    h2 Track
     template(v-if='Track')
-      div id: {{ Track.id }}
-      div name: {{ Track.name }}
-      clip(
-        v-for='clip in Track.clips'
-        v-bind:id='clip.id'
-        v-bind:key='clip.id'
-      )
-      comment(
-        v-for='comment in Track.comments'
-        v-bind:id='comment.id'
-        v-bind:key='comment.id'
-      )
+      h2 {{ Track.name }}
+      template(v-if='Track.clips.length')
+        clip(
+          v-for='clip in Track.clips'
+          v-bind:id='clip.id'
+          v-bind:key='clip.id'
+        )
+      template(v-else)
+        | This track is empty
+    template(v-else)
+      | {{ notFoundMessage }}
 </template>
 
 <script>
@@ -35,6 +33,12 @@ export default {
 
   },
 
+  data () {
+    return {
+      notFoundMessage: '...'
+    }
+  },
+
   apollo: {
 
     Track: {
@@ -46,9 +50,6 @@ export default {
             clips {
               id
             },
-            comments {
-              id
-            }
           }
         }
       `,
@@ -61,6 +62,12 @@ export default {
 
   },
 
+  mounted () {
+    setTimeout(() => {
+      this.notFoundMessage = `Can't find track "${this.id}"`
+    }, 2000)
+  },
+
   components: {
     Clip,
     Comment
@@ -71,5 +78,8 @@ export default {
 
 <style scoped lang="sass">
 .track
-  margin-left: 60px  
+  margin-left: 120px  
+
+h5
+  margin-left: 30px  
 </style>

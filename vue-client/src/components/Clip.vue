@@ -1,14 +1,9 @@
 <template lang="pug">
   .clip
-    h2 Clip
     template(v-if='Clip')
-      div id: {{ Clip.id }}
-      div name: {{ Clip.name }}
-      comment(
-        v-for='comment in Clip.comments'
-        v-bind:id='comment.id'
-        v-bind:key='comment.id'
-      )
+      h3 {{ Clip.name }}
+    template(v-else)
+      | {{ notFoundMessage }}
 </template>
 
 <script>
@@ -29,6 +24,12 @@ export default {
 
   },
 
+  data () {
+    return {
+      notFoundMessage: '...'
+    }
+  },
+
   apollo: {
 
     Clip: {
@@ -37,9 +38,6 @@ export default {
           Clip (id: $id) {
             id,
             name,
-            comments {
-              id
-            }
           }
         }
       `,
@@ -52,6 +50,18 @@ export default {
 
   },
 
+  methods: {
+
+    prettyBytes: prettyBytes
+
+  },
+
+  mounted () {
+    setTimeout(() => {
+      this.notFoundMessage = `Can't find clip "${this.id}"`
+    }, 2000)
+  },
+
   components: {
     Comment
   }
@@ -61,5 +71,8 @@ export default {
 
 <style scoped lang="sass">
 .clip
-  margin-left: 60px  
+  margin-left: 120px  
+
+h5
+  margin-left: 30px
 </style>

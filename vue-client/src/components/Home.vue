@@ -4,6 +4,8 @@
     h3
       | A music collaboration studio, made with&nbsp;
       a(href='http://graphql.org/') GraphQL
+      | ,&nbsp;
+      a(href='https://www.apollographql.com/') Apollo
       | &nbsp;and&nbsp;
       a(href='https://vuejs.org/') Vue
     br

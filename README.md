@@ -1,6 +1,8 @@
 # TrackQL
 
-> A music collaboration studio, made with [GraphQL](http://graphql.org/)
+> A music collaboration studio,
+> made with [GraphQL](http://graphql.org/)
+> and [Apollo](https://www.apollographql.com/)
 
 ## [vue-client](https://github.com/JanCVanB/TrackQL/tree/master/vue-client)
 

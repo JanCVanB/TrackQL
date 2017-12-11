@@ -2,6 +2,7 @@
   .track
     template(v-if='Track')
       h2 {{ Track.name }}
+      h5 {{ volumePercent }}% volume
       template(v-if='Track.clips.length')
         clip(
           v-for='clip in Track.clips'
@@ -46,10 +47,11 @@ export default {
         query TrackQuery ($id: ID) {
           Track (id: $id) {
             id,
-            name,
             clips {
               id
             },
+            level,
+            name
           }
         }
       `,
@@ -58,6 +60,15 @@ export default {
           id: this.id
         }
       }
+    }
+
+  },
+
+  computed: {
+
+    volumePercent () {
+      if (!this.Track || !this.Track.level) return 0
+      return Number.parseInt(this.Track.level * 100)
     }
 
   },
